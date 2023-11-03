@@ -58,6 +58,7 @@ An observed pattern which would disprove my hypothesis would be the opposite: mi
 ```{r}
 library(tidyverse)
 library(readr)
+library(dplyr)
 ```
 
 
@@ -79,6 +80,7 @@ CCES22_q1_overall_plot <- CCES22_original_data |>
   geom_col() +
   labs(x = "Respondents Who Support Military Intervention for Terrorism",
                 y = "Amount (Total)")
+
 CCES22_q1_overall_plot
 
 ```
