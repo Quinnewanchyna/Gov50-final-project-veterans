@@ -52,3 +52,35 @@ An observed pattern that would provide support for my hypothesis would be an obs
 
 An observed pattern which would disprove my hypothesis would be the opposite: military households overwhelmingly supporting hawkish (pro-war) policies in comparison to non-military households.
 
+
+## Visual
+
+```{r}
+library(tidyverse)
+library(readr)
+```
+
+
+```{r}
+CCES22_original_data <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+CCES22_original_data <- CCES22_original_data |>
+  mutate(gwot_support = if_else(CC22_420_2 == 1,
+                                "Supports War on Terror", "Does not Support War on Terror")) |>
+  group_by(gwot_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+CCES22_q1_overall_plot <- CCES22_original_data |>
+ 
+   ggplot(mapping = aes(x = gwot_support,
+                        y = n)) +
+  geom_col() +
+  labs(x = "Respondents Who Support Military Intervention for Terrorism",
+                y = "Amount (Total)")
+CCES22_q1_overall_plot
+
+```
+
+
