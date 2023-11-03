@@ -1,6 +1,6 @@
 ---
 title: "Gov 50 Final Project"
-author: "Your Name Here"
+author: Quinn Ewanchyna
 description: "My final project"
 output:
   distill::distill_article:
@@ -9,6 +9,46 @@ output:
 
 
 
-## Project thoughts
+## Project Thoughts
 
-I am interested in exploring data related to...
+I am interested in further analyzing the relationship between military service and the support of pro-war foreign policy decisions. Does military service alter one's perception of war? Does it impact the foreign policy decisions one choose to support? I aim to address and answer these questions within my research through analyzing data sets which capture both military and public opinion regarding these matters.
+
+## Research Proposal
+
+How does serving in the military or having a family member who served in the military affect one's belief in hawkish foreign policy decisions? 
+
+American foreign policy rests upon two opposite points of a spectrum: hawkish ideology, which represents a strong use of military force and a preference for war - and dovish ideology, which represents a reluctance in using military force and a preference for peace.
+
+While public confidence in the United States military is generally unanimous, the majority of the members who make up the United States military tend to politically align with the Republican party. From a historical standpoint, the Republican party has been more likely to support pro-war foreign policy decisions. In October 2002, the House passed the Use of Military Force Authorization of the Use of Military Force (AUMF) for the invasion of Iraq and later Afghanistan, with 215 Republicans and 81 Democrats voting for the measure, and 126 Democrats and 6 Republicans voting against. Based on these perceptions, many individuals tend to perceive members of the military as holding hawkish biases and pro-war stances.
+
+Within my research, I hypothesize the opposite to be true. Since the Global War on Terror began, rates of post-traumatic stress disorder and various other service-connected disabilities among military veterans have increased exponentially. Similarly, according to research conducted by the Pew Research Center in 2019, the majority of U.S. military veterans stated that the wars in Iraq and Afghanistan were "not worth fighting". Furthermore, I hypothesize that serving in the military or having a family member who served in the military makes one less likely to support hawkish (pro-war) foreign policy decisions.
+
+I will be using data from Harvard University's CCES Dataverse, specifically referencing the "Cooperative Election Study Common Content, 2022".My explanatory variable will include individuals categorized within the "Military Household" demographic, which consists of households who currently serve in the military, have served in the military, or have a family member who is serving/served in the military. My outcome variable of interest is the response ("Yes" - "No") of individuals within the "Military Household" demographic in regards to survey questions which involve American foreign policy.
+
+The survey questions are as follows:
+
+"Would you support the use of U.S. military troops in order to ...? (Please check all that apply)
+
+- Ensure the supply of oil
+- Destroy a terrorist camp
+- Intervene in a region where there is genocide or a civil war
+- Assist the spread of democracy
+- Protect American allies under attack by foreign nations
+- Help the United Nations uphold international law
+- None of the above"
+
+"What do you think the United States should do in response to Russia's invasion of Ukraine?
+
+- Not sure
+- Do not get involved
+- Send food, medicine, and other aid to countries affected
+- Provide arms to Ukraine
+- Enforce a no fly zone
+- Use drones and air craft to bomb Russian troops
+- Send military support staff (non-combat)
+- Send significant force to fight Russia"
+
+An observed pattern that would provide support for my hypothesis would be an observable differentiation in responses between members of the "Military Household" and "Non-Military Household" demographics, with military households overwhelmingly supporting dovish (anti-war) policies more so than non-military households. Non-military households will serve as a control group.
+
+An observed pattern which would disprove my hypothesis would be the opposite: military households overwhelmingly supporting hawkish (pro-war) policies in comparison to non-military households.
+
