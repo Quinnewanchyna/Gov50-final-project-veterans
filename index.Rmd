@@ -86,3 +86,28 @@ CCES22_q1_overall_plot
 ```
 
 
+
+
+
+```{r}
+CCES22_original_data <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                           show_col_types = FALSE)
+CCES22_original_data <- CCES22_original_data |>
+    mutate(gwot_support = if_else(CC22_420_2 == 1,
+                                "Supports War on Terror", "Does not Support War on Terror")) |>
+  mutate(mil_member_current = if_else(milstat_1 == 1,
+                                      "Current Military", "Not Current Military"))
+
+mil_gwot_support_table <- CCES22_original_data |>
+  group_by(mil_member_current, gwot_support) |>
+  summarize(n = n()) |>
+  mutate(prop = n / sum(n)) |>
+  drop_na()
+
+knitr::kable(mil_gwot_support_table)
+```
+
+
+
+
+
