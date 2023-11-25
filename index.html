@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["Data/CCES22_Common_OUTPUT_vv_topost.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["Data/CCES22_Common_OUTPUT_vv_topost.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/figure-html5/unnamed-chunk-12-1.png","index_files/figure-html5/unnamed-chunk-14-1.png","index_files/figure-html5/unnamed-chunk-16-1.png","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/figure-html5/unnamed-chunk-8-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1549,7 +1549,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ul>
 <p>An observed pattern that would provide support for my hypothesis would be an observable differentiation in responses between members of the “Military Household” and “Non-Military Household” demographics, with military households overwhelmingly supporting dovish (anti-war) policies more so than non-military households. Non-military households will serve as a control group.</p>
 <p>An observed pattern which would disprove my hypothesis would be the opposite: military households overwhelmingly supporting hawkish (pro-war) policies in comparison to non-military households.</p>
-<h2 id="visual">Visual</h2>
+<h2 id="sample-overview">Sample Overview</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
@@ -1559,12 +1559,147 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>population_table</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span><span class='va'>population_table</span> <span class='op'>&lt;-</span> <span class='va'>population_table</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>milstat_1_sum <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>milstat_1</span> <span class='op'>==</span> <span class='st'>"1"</span><span class='op'>)</span>,</span>
+<span>            milstat_2_sum <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>milstat_2</span> <span class='op'>==</span> <span class='st'>"1"</span><span class='op'>)</span>,</span>
+<span>            milstat_3_sum <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>milstat_3</span> <span class='op'>==</span> <span class='st'>"1"</span><span class='op'>)</span>,</span>
+<span>            milstat_4_sum <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>milstat_4</span> <span class='op'>==</span> <span class='st'>"1"</span><span class='op'>)</span>,</span>
+<span>            milstat_5_sum <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>milstat_5</span> <span class='op'>==</span> <span class='st'>"1"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>population_table</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Current Military"</span>, <span class='st'>"Current Military Family"</span>, <span class='st'>"Veteran"</span>, <span class='st'>"Veteran Family"</span>, <span class='st'>"No Military Affiliation"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 27%" />
+<col style="width: 9%" />
+<col style="width: 17%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Current Military</th>
+<th style="text-align: right;">Current Military Family</th>
+<th style="text-align: right;">Veteran</th>
+<th style="text-align: right;">Veteran Family</th>
+<th style="text-align: right;">No Military Affiliation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">595</td>
+<td style="text-align: right;">3484</td>
+<td style="text-align: right;">6379</td>
+<td style="text-align: right;">22843</td>
+<td style="text-align: right;">30545</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="respones-from-total-sample-population">Respones from Total Sample Population</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_supply_oil</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_supply_oil</span> <span class='op'>&lt;-</span> <span class='va'>troops_supply_oil</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_oil_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_1</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Supports Military Intervention"</span>,</span>
+<span>                                      <span class='st'>"Does Not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_oil_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>troops_supply_oil</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Ensure the Supply of Oil"</span>, <span class='st'>"Total (Amount)"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ensure the Supply of Oil</th>
+<th style="text-align: right;">Total (Amount)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Does Not Support Military Intervention</td>
+<td style="text-align: right;">39383</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Supports Military Intervention</td>
+<td style="text-align: right;">11598</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_supply_oil</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_supply_oil</span> <span class='op'>&lt;-</span> <span class='va'>troops_supply_oil</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_oil_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_1</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Supports Military Intervention"</span>,</span>
+<span>                                      <span class='st'>"Does Not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_oil_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_supply_oil_plot</span> <span class='op'>&lt;-</span> <span class='va'>troops_supply_oil</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>troops_oil_support</span>,</span>
+<span>                       y <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Ensure the Supply of Oil"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Total (Amount)"</span><span class='op'>)</span></span>
+<span><span class='va'>troops_supply_oil_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>CCES22_original_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
 <span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
 <span></span>
 <span><span class='va'>CCES22_original_data</span> <span class='op'>&lt;-</span> <span class='va'>CCES22_original_data</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>gwot_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_2</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
-<span>                                <span class='st'>"Supports War on Terror"</span>, <span class='st'>"Does not Support War on Terror"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>                                <span class='st'>"Supports Military Intervention"</span>, <span class='st'>"Does not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>gwot_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>CCES22_original_data</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"War on Terror"</span>, <span class='st'>"Total (Amount)"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">War on Terror</th>
+<th style="text-align: right;">Total (Amount)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Does not Support Military Intervention</td>
+<td style="text-align: right;">23586</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Supports Military Intervention</td>
+<td style="text-align: right;">27395</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>CCES22_original_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>CCES22_original_data</span> <span class='op'>&lt;-</span> <span class='va'>CCES22_original_data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>gwot_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_2</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                <span class='st'>"Supports Military Intervention"</span>, <span class='st'>"Does not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>gwot_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
@@ -1574,12 +1709,302 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span>   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>gwot_support</span>,</span>
 <span>                        y <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Respondents Who Support Military Intervention for Terrorism"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"War on Terror"</span>,</span>
 <span>                y <span class='op'>=</span> <span class='st'>"Amount (Total)"</span><span class='op'>)</span></span>
 <span></span>
 <span><span class='va'>CCES22_q1_overall_plot</span></span></code></pre>
 </div>
-<p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_gen_civ</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_gen_civ</span> <span class='op'>&lt;-</span> <span class='va'>troops_gen_civ</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_gen_civ_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_3</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Supports Military Intervention"</span>,</span>
+<span>                                      <span class='st'>"Does Not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_gen_civ_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>troops_gen_civ</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Intervene during Genocide or Civil War"</span>, <span class='st'>"Total (Amount)"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Intervene during Genocide or Civil War</th>
+<th style="text-align: right;">Total (Amount)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Does Not Support Military Intervention</td>
+<td style="text-align: right;">31944</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Supports Military Intervention</td>
+<td style="text-align: right;">19037</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_gen_civ</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_gen_civ</span> <span class='op'>&lt;-</span> <span class='va'>troops_gen_civ</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_gen_civ_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_3</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Supports Military Intervention"</span>,</span>
+<span>                                      <span class='st'>"Does Not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_gen_civ_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_gen_civ_plot</span> <span class='op'>&lt;-</span> <span class='va'>troops_gen_civ</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>troops_gen_civ_support</span>,</span>
+<span>                       y <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Intervene During Genocide or Civil War"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Total Amount"</span><span class='op'>)</span></span>
+<span><span class='va'>troops_gen_civ_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_democ</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_democ</span> <span class='op'>&lt;-</span> <span class='va'>troops_democ</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_democ_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_4</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Supports Military Intervention"</span>,</span>
+<span>                                      <span class='st'>"Does Not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_democ_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>troops_democ</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Assist in Spreading Democracy"</span>, <span class='st'>"Total (Amount)"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Assist in Spreading Democracy</th>
+<th style="text-align: right;">Total (Amount)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Does Not Support Military Intervention</td>
+<td style="text-align: right;">42321</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Supports Military Intervention</td>
+<td style="text-align: right;">8660</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_democ</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_democ</span> <span class='op'>&lt;-</span> <span class='va'>troops_democ</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_democ_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_4</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Supports Military Intervention"</span>,</span>
+<span>                                      <span class='st'>"Does Not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_democ_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_democ_plot</span> <span class='op'>&lt;-</span> <span class='va'>troops_democ</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>troops_democ_support</span>,</span>
+<span>                       y <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Assist in Spreading Democracy"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Total (Amount)"</span><span class='op'>)</span></span>
+<span><span class='va'>troops_democ_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_allies</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_allies</span> <span class='op'>&lt;-</span> <span class='va'>troops_allies</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_allies_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_5</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Supports Military Intervention"</span>,</span>
+<span>                                      <span class='st'>"Does Not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_allies_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>troops_allies</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Protect Allies Under Attack"</span>, <span class='st'>"Total (Amount)"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Protect Allies Under Attack</th>
+<th style="text-align: right;">Total (Amount)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Does Not Support Military Intervention</td>
+<td style="text-align: right;">16105</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Supports Military Intervention</td>
+<td style="text-align: right;">34876</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_allies</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_allies</span> <span class='op'>&lt;-</span> <span class='va'>troops_allies</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_allies_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_5</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Supports Military Intervention"</span>,</span>
+<span>                                      <span class='st'>"Does Not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_allies_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_allies_plot</span> <span class='op'>&lt;-</span> <span class='va'>troops_allies</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>troops_allies_support</span>,</span>
+<span>                       y <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Protect Allies Under Attack"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Total (Amount)"</span><span class='op'>)</span></span>
+<span><span class='va'>troops_allies_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_UN</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_UN</span> <span class='op'>&lt;-</span> <span class='va'>troops_UN</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_UN_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_6</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Supports Military Intervention"</span>,</span>
+<span>                                      <span class='st'>"Does Not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_UN_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>troops_UN</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Assist United Nations Uphold Intl. Law"</span>, <span class='st'>"Total (Amount)"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Assist United Nations Uphold Intl. Law</th>
+<th style="text-align: right;">Total (Amount)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Does Not Support Military Intervention</td>
+<td style="text-align: right;">27098</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Supports Military Intervention</td>
+<td style="text-align: right;">23883</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_UN</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_UN</span> <span class='op'>&lt;-</span> <span class='va'>troops_UN</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_UN_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_6</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Supports Military Intervention"</span>,</span>
+<span>                                      <span class='st'>"Does Not Support Military Intervention"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_UN_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_UN_plot</span> <span class='op'>&lt;-</span> <span class='va'>troops_UN</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>troops_UN_support</span>,</span>
+<span>                       y <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Assist United Nations Uphold Intl. Law"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Total (Amount)"</span><span class='op'>)</span></span>
+<span><span class='va'>troops_UN_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_none</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_none</span> <span class='op'>&lt;-</span> <span class='va'>troops_none</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_none_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_7</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Agree"</span>,</span>
+<span>                                      <span class='st'>"Disagree"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_none_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>troops_none</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Never Use U.S. Troops"</span>, <span class='st'>"Total (Amount)"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Never Use U.S. Troops</th>
+<th style="text-align: right;">Total (Amount)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Agree</td>
+<td style="text-align: right;">6738</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Disagree</td>
+<td style="text-align: right;">44243</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>troops_none</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"Data/CCES22_Common_OUTPUT_vv_topost.csv"</span>,</span>
+<span>                                 show_col_types <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_none</span> <span class='op'>&lt;-</span> <span class='va'>troops_none</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>troops_none_support <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_7</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
+<span>                                      <span class='st'>"Agree"</span>,</span>
+<span>                                      <span class='st'>"Disagree"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>troops_none_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>troops_none_plot</span> <span class='op'>&lt;-</span> <span class='va'>troops_none</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>troops_none_support</span>,</span>
+<span>                       y <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Never Use U.S. Troops"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Total (Amount)"</span><span class='op'>)</span></span>
+<span><span class='va'>troops_none_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1594,24 +2019,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span><span class='va'>mil_gwot_support_table</span> <span class='op'>&lt;-</span> <span class='va'>CCES22_original_data</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>mil_member_current</span>, <span class='va'>gwot_support</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>prop <span class='op'>=</span> <span class='va'>n</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  </span>
 <span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
 <span></span>
 <span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>mil_gwot_support_table</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 45%" />
-<col style="width: 8%" />
-<col style="width: 14%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">mil_member_current</th>
 <th style="text-align: left;">gwot_support</th>
 <th style="text-align: right;">n</th>
-<th style="text-align: right;">prop</th>
 </tr>
 </thead>
 <tbody>
@@ -1619,25 +2037,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: left;">Current Military</td>
 <td style="text-align: left;">Does not Support War on Terror</td>
 <td style="text-align: right;">153</td>
-<td style="text-align: right;">0.2571429</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Current Military</td>
 <td style="text-align: left;">Supports War on Terror</td>
 <td style="text-align: right;">117</td>
-<td style="text-align: right;">0.1966387</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Not Current Military</td>
 <td style="text-align: left;">Does not Support War on Terror</td>
 <td style="text-align: right;">23433</td>
-<td style="text-align: right;">0.3944617</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Not Current Military</td>
 <td style="text-align: left;">Supports War on Terror</td>
 <td style="text-align: right;">27278</td>
-<td style="text-align: right;">0.4591869</td>
 </tr>
 </tbody>
 </table>
