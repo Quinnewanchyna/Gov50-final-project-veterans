@@ -63,12 +63,83 @@ library(dplyr)
 
 
 ```{r}
+population_table <- CCES22_original_data |>
+  summarize(milstat_1_sum = sum(milstat_1 == "1"),
+            milstat_2_sum = sum(milstat_2 == "1"),
+            milstat_3_sum = sum(milstat_3 == "1"),
+            milstat_4_sum = sum(milstat_4 == "1"),
+            milstat_5_sum = sum(milstat_5 == "1"))
+
+knitr::kable(population_table,
+             col.names = c("Current Military", "Current Military Family", "Veteran", "Veteran Family", "No Military Affiliation"))
+  
+  
+```
+
+```{r}
+troops_supply_oil <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+troops_supply_oil <- troops_supply_oil |>
+  mutate(troops_oil_support = if_else(CC22_420_1 == 1,
+                                      "Supports Military Intervention",
+                                      "Does Not Support Military Intervention")) |>
+  group_by(troops_oil_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+knitr::kable(troops_supply_oil,
+             col.names = c("Ensure the Supply of Oil", "Total (Amount)"))
+
+```
+
+
+```{r}
+troops_supply_oil <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+troops_supply_oil <- troops_supply_oil |>
+  mutate(troops_oil_support = if_else(CC22_420_1 == 1,
+                                      "Supports Military Intervention",
+                                      "Does Not Support Military Intervention")) |>
+  group_by(troops_oil_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+troops_supply_oil_plot <- troops_supply_oil |>
+  ggplot(mapping = aes(x = troops_oil_support,
+                       y = n)) +
+  geom_col() +
+  labs(x = "Ensure the Supply of Oil",
+       y = "Total (Amount)")
+troops_supply_oil_plot
+```
+
+
+```{r}
 CCES22_original_data <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
                                  show_col_types = FALSE)
 
 CCES22_original_data <- CCES22_original_data |>
   mutate(gwot_support = if_else(CC22_420_2 == 1,
-                                "Supports War on Terror", "Does not Support War on Terror")) |>
+                                "Supports Military Intervention", "Does not Support Military Intervention")) |>
+  group_by(gwot_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+knitr::kable(CCES22_original_data,
+             col.names = c("War on Terror", "Total (Amount)"))
+```
+
+
+
+```{r}
+CCES22_original_data <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+CCES22_original_data <- CCES22_original_data |>
+  mutate(gwot_support = if_else(CC22_420_2 == 1,
+                                "Supports Military Intervention", "Does not Support Military Intervention")) |>
   group_by(gwot_support) |>
   summarize(n = n()) |>
   drop_na()
@@ -78,7 +149,7 @@ CCES22_q1_overall_plot <- CCES22_original_data |>
    ggplot(mapping = aes(x = gwot_support,
                         y = n)) +
   geom_col() +
-  labs(x = "Respondents Who Support Military Intervention for Terrorism",
+  labs(x = "War on Terror",
                 y = "Amount (Total)")
 
 CCES22_q1_overall_plot
@@ -86,7 +157,207 @@ CCES22_q1_overall_plot
 ```
 
 
+```{r}
+troops_gen_civ <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
 
+troops_gen_civ <- troops_gen_civ |>
+  mutate(troops_gen_civ_support = if_else(CC22_420_3 == 1,
+                                      "Supports Military Intervention",
+                                      "Does Not Support Military Intervention")) |>
+  group_by(troops_gen_civ_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+knitr::kable(troops_gen_civ,
+             col.names = c("Intervene during Genocide or Civil War", "Total (Amount)"))
+
+```
+
+
+
+```{r}
+troops_gen_civ <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+troops_gen_civ <- troops_gen_civ |>
+  mutate(troops_gen_civ_support = if_else(CC22_420_3 == 1,
+                                      "Supports Military Intervention",
+                                      "Does Not Support Military Intervention")) |>
+  group_by(troops_gen_civ_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+troops_gen_civ_plot <- troops_gen_civ |>
+  ggplot(mapping = aes(x = troops_gen_civ_support,
+                       y = n)) +
+  geom_col() +
+  labs(x = "Intervene During Genocide or Civil War",
+       y = "Total Amount")
+troops_gen_civ_plot
+```
+
+
+```{r}
+troops_democ <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+troops_democ <- troops_democ |>
+  mutate(troops_democ_support = if_else(CC22_420_4 == 1,
+                                      "Supports Military Intervention",
+                                      "Does Not Support Military Intervention")) |>
+  group_by(troops_democ_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+knitr::kable(troops_democ,
+             col.names = c("Assist in Spreading Democracy", "Total (Amount)"))
+
+```
+
+
+```{r}
+troops_democ <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+troops_democ <- troops_democ |>
+  mutate(troops_democ_support = if_else(CC22_420_4 == 1,
+                                      "Supports Military Intervention",
+                                      "Does Not Support Military Intervention")) |>
+  group_by(troops_democ_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+troops_democ_plot <- troops_democ |>
+  ggplot(mapping = aes(x = troops_democ_support,
+                       y = n)) +
+  geom_col() +
+  labs(x = "Assist in Spreading Democracy",
+       y = "Total (Amount)")
+troops_democ_plot
+```
+
+
+
+```{r}
+troops_allies <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+troops_allies <- troops_allies |>
+  mutate(troops_allies_support = if_else(CC22_420_5 == 1,
+                                      "Supports Military Intervention",
+                                      "Does Not Support Military Intervention")) |>
+  group_by(troops_allies_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+knitr::kable(troops_allies,
+             col.names = c("Protect Allies Under Attack", "Total (Amount)"))
+
+```
+
+
+```{r}
+troops_allies <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+troops_allies <- troops_allies |>
+  mutate(troops_allies_support = if_else(CC22_420_5 == 1,
+                                      "Supports Military Intervention",
+                                      "Does Not Support Military Intervention")) |>
+  group_by(troops_allies_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+troops_allies_plot <- troops_allies |>
+  ggplot(mapping = aes(x = troops_allies_support,
+                       y = n)) +
+  geom_col() +
+  labs(x = "Protect Allies Under Attack",
+       y = "Total (Amount)")
+troops_allies_plot
+
+```
+
+
+```{r}
+troops_UN <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+troops_UN <- troops_UN |>
+  mutate(troops_UN_support = if_else(CC22_420_6 == 1,
+                                      "Supports Military Intervention",
+                                      "Does Not Support Military Intervention")) |>
+  group_by(troops_UN_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+knitr::kable(troops_UN,
+             col.names = c("Assist United Nations Uphold Intl. Law", "Total (Amount)"))
+```
+
+
+```{r}
+troops_UN <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+troops_UN <- troops_UN |>
+  mutate(troops_UN_support = if_else(CC22_420_6 == 1,
+                                      "Supports Military Intervention",
+                                      "Does Not Support Military Intervention")) |>
+  group_by(troops_UN_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+troops_UN_plot <- troops_UN |>
+  ggplot(mapping = aes(x = troops_UN_support,
+                       y = n)) +
+  geom_col() +
+  labs(x = "Assist United Nations Uphold Intl. Law",
+       y = "Total (Amount)")
+troops_UN_plot
+```
+
+
+```{r}
+troops_none <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+troops_none <- troops_none |>
+  mutate(troops_none_support = if_else(CC22_420_7 == 1,
+                                      "Agree",
+                                      "Disagree")) |>
+  group_by(troops_none_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+knitr::kable(troops_none,
+             col.names = c("Never Use U.S. Troops", "Total (Amount)"))
+```
+
+
+```{r}
+troops_none <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+
+troops_none <- troops_none |>
+  mutate(troops_none_support = if_else(CC22_420_7 == 1,
+                                      "Agree",
+                                      "Disagree")) |>
+  group_by(troops_none_support) |>
+  summarize(n = n()) |>
+  drop_na()
+
+troops_none_plot <- troops_none |>
+  ggplot(mapping = aes(x = troops_none_support,
+                       y = n)) +
+  geom_col() +
+  labs(x = "Never Use U.S. Troops",
+       y = "Total (Amount)")
+troops_none_plot
+
+
+```
 
 
 ```{r}
@@ -101,7 +372,7 @@ CCES22_original_data <- CCES22_original_data |>
 mil_gwot_support_table <- CCES22_original_data |>
   group_by(mil_member_current, gwot_support) |>
   summarize(n = n()) |>
-  mutate(prop = n / sum(n)) |>
+  
   drop_na()
 
 knitr::kable(mil_gwot_support_table)
