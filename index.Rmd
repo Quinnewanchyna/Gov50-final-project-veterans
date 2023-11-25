@@ -53,7 +53,7 @@ An observed pattern that would provide support for my hypothesis would be an obs
 An observed pattern which would disprove my hypothesis would be the opposite: military households overwhelmingly supporting hawkish (pro-war) policies in comparison to non-military households.
 
 
-## Visual
+## Sample Overview
 
 ```{r}
 library(tidyverse)
@@ -63,7 +63,9 @@ library(dplyr)
 
 
 ```{r}
-population_table <- CCES22_original_data |>
+population_table <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
+                                 show_col_types = FALSE)
+population_table <- population_table |>
   summarize(milstat_1_sum = sum(milstat_1 == "1"),
             milstat_2_sum = sum(milstat_2 == "1"),
             milstat_3_sum = sum(milstat_3 == "1"),
@@ -75,6 +77,8 @@ knitr::kable(population_table,
   
   
 ```
+
+## Respones from Total Sample Population
 
 ```{r}
 troops_supply_oil <- read_csv("Data/CCES22_Common_OUTPUT_vv_topost.csv",
