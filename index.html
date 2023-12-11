@@ -1533,8 +1533,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li>Intervene in a region where there is genocide or a civil war</li>
 <li>Assist the spread of democracy</li>
 <li>Protect American allies under attack by foreign nations</li>
-<li>Help the United Nations uphold international law</li>
-<li>None of the above”</li>
+<li>Help the United Nations uphold international law”</li>
 </ul>
 <p>An observed pattern that would provide support for my hypothesis would be an observable differentiation in responses between members of the “Military Household” and “Non-Military Household” demographics, with military households overwhelmingly supporting dovish (anti-war) policies more so than non-military households. Non-military households will serve thus as a control group.</p>
 <p>An observed pattern which would disprove my hypothesis would be the opposite: military households overwhelmingly supporting hawkish (pro-war) policies in comparison to non-military households.</p>
@@ -1555,10 +1554,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>milstat_3_sum <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>milstat_3</span> <span class='op'>==</span> <span class='st'>"1"</span><span class='op'>)</span>,</span>
 <span>            milstat_5_sum <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>milstat_5</span> <span class='op'>==</span> <span class='st'>"1"</span><span class='op'>)</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>population_table</span>,</span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>population_table</span>, caption <span class='op'>=</span> <span class='st'>"Respondent Population"</span>,</span>
 <span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Veteran"</span>, <span class='st'>"No Military Affiliation"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-2">Table 1: </span>Respondent Population</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">Veteran</th>
@@ -1597,9 +1597,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>UN_intervention <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_6</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
 <span>                                   <span class='st'>"Supports Military Force"</span>,</span>
 <span>                                   <span class='st'>"Does Not Support Military Force"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>none_intervention <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>CC22_420_7</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
-<span>                                     <span class='st'>"Never use Military Force"</span>,</span>
-<span>                                     <span class='st'>"Use Military Force"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>veteran <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>milstat_3</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
 <span>                           <span class='st'>"Veteran"</span>, <span class='st'>"Other"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>no_military <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>milstat_5</span> <span class='op'>==</span> <span class='fl'>1</span>,</span>
@@ -1608,6 +1605,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span>                            <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>milstat_5</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"No Military Affiliation"</span>, <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
+<h2 id="respondent-data">Respondent Data</h2>
+<p>“Would you support the use of U.S. military troops in order to ensure the supply of oil?”</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>oil_intervention_vet_prop</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
@@ -1624,14 +1623,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Does Not Support Military Force   4173 0.654
 2 Supports Military Force           1516 0.238</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>oil_intervention_vet_prop</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>oil_intervention_vet_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Veterans"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Ensure the Supply of Oil"</span>, <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-4">Table 2: </span>Veterans</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">oil_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
+<th style="text-align: left;">Ensure the Supply of Oil</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
 </tr>
 </thead>
 <tbody>
@@ -1664,14 +1666,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Does Not Support Military Force  19553 0.640
 2 Supports Military Force           5452 0.178</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>oil_intervention_nomil_prop</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>oil_intervention_nomil_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"No Military Affiliation"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Ensure the Supply of Oil"</span>, <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-5">Table 3: </span>No Military Affiliation</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">oil_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
+<th style="text-align: left;">Ensure the Supply of Oil</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
 </tr>
 </thead>
 <tbody>
@@ -1705,9 +1710,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
                       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1                      1.78    1.73 -0.0484</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>oil_intervention_mean</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>oil_intervention_mean</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Average Treatment Effect: Ensure the Supply of Oil"</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-6">Table 4: </span>Average Treatment Effect: Ensure the Supply of Oil</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">No Military Affiliation</th>
@@ -1724,6 +1731,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tbody>
 </table>
 </div>
+<p>“Would you support the use of U.S. military troops in order to destroy a terrorist camp?”</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>gwot_intervention_vet_prop</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
@@ -1740,14 +1748,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Does Not Support Military Force   1762 0.276
 2 Supports Military Force           3927 0.616</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>gwot_intervention_vet_prop</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>gwot_intervention_vet_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Veterans"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Destroy a Terrorist Camp"</span>, <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-7">Table 5: </span>Veterans</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">gwot_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
+<th style="text-align: left;">Destroy a Terrorist Camp</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
 </tr>
 </thead>
 <tbody>
@@ -1760,6 +1771,49 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: left;">Supports Military Force</td>
 <td style="text-align: right;">3927</td>
 <td style="text-align: right;">0.6156137</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>gwot_intervention_nomil_prop</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>milstat_5</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>gwot_intervention</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>amount <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>prop <span class='op'>=</span> <span class='va'>amount</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>amount</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span><span class='va'>gwot_intervention_nomil_prop</span></span></code></pre>
+</div>
+<pre><code># A tibble: 2 × 3
+  gwot_intervention               amount  prop
+  &lt;chr&gt;                            &lt;int&gt; &lt;dbl&gt;
+1 Does Not Support Military Force  12987 0.425
+2 Supports Military Force          12018 0.393</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>gwot_intervention_nomil_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"No Military Affiliation"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Destroy a Terrorist Camp"</span>, <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<caption><span id="tab:unnamed-chunk-8">Table 6: </span>No Military Affiliation</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Destroy a Terrorist Camp</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Does Not Support Military Force</td>
+<td style="text-align: right;">12987</td>
+<td style="text-align: right;">0.4251760</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Supports Military Force</td>
+<td style="text-align: right;">12018</td>
+<td style="text-align: right;">0.3934523</td>
 </tr>
 </tbody>
 </table>
@@ -1781,9 +1835,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
                       &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
 1                      1.52    1.31 -0.210</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>gwot_intervention_mean</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>gwot_intervention_mean</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Average Treatment Effect: Destroy a Terrorist Camp"</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-9">Table 7: </span>Average Treatment Effect: Destroy a Terrorist Camp</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">No Military Affiliation</th>
@@ -1800,46 +1856,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tbody>
 </table>
 </div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>gwot_intervention_nomil_prop</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>milstat_5</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>gwot_intervention</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>amount <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>prop <span class='op'>=</span> <span class='va'>amount</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>amount</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
-<span><span class='va'>gwot_intervention_nomil_prop</span></span></code></pre>
-</div>
-<pre><code># A tibble: 2 × 3
-  gwot_intervention               amount  prop
-  &lt;chr&gt;                            &lt;int&gt; &lt;dbl&gt;
-1 Does Not Support Military Force  12987 0.425
-2 Supports Military Force          12018 0.393</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>gwot_intervention_nomil_prop</span><span class='op'>)</span></span></code></pre>
-</div>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">gwot_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Does Not Support Military Force</td>
-<td style="text-align: right;">12987</td>
-<td style="text-align: right;">0.4251760</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Supports Military Force</td>
-<td style="text-align: right;">12018</td>
-<td style="text-align: right;">0.3934523</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>“Would you support the use of U.S. military troops in order to intervene in a region where there is genocide or civil war?”</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>genocide_intervention_vet_prop</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
@@ -1856,14 +1873,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Does Not Support Military Force   3781 0.593
 2 Supports Military Force           1908 0.299</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>genocide_intervention_vet_prop</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>genocide_intervention_vet_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Veterans"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Intervene for Genocide/Civil War"</span>, <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-10">Table 8: </span>Veterans</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">genocide_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
+<th style="text-align: left;">Intervene for Genocide/Civil War</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
 </tr>
 </thead>
 <tbody>
@@ -1896,14 +1916,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Does Not Support Military Force  15586 0.510
 2 Supports Military Force           9419 0.308</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>genocide_intervention_nomil_prop</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>genocide_intervention_nomil_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"No Military Affiliation"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Intervene for Genocide/Civil War"</span>, <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-11">Table 9: </span>No Military Affiliation</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">genocide_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
+<th style="text-align: left;">Intervene for Genocide/Civil War</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
 </tr>
 </thead>
 <tbody>
@@ -1937,9 +1960,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
                       &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
 1                      1.62    1.66 0.0413</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>genocide_intervention_mean</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>genocide_intervention_mean</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Average Treatment Effect: Intervene for Genocide or Civil War"</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-12">Table 10: </span>Average Treatment Effect: Intervene for Genocide or Civil War</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">No Military Affiliation</th>
@@ -1956,6 +1981,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tbody>
 </table>
 </div>
+<p>“Would you support the use of U.S. military troops in order to assist in the spread of democracy?”</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>democracy_intervention_vet_prop</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
@@ -1972,14 +1998,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Does Not Support Military Force   4745 0.744
 2 Supports Military Force            944 0.148</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>democracy_intervention_vet_prop</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>democracy_intervention_vet_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Veterans"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Intervene to Spread Democracy"</span>, <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-13">Table 11: </span>Veterans</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">democracy_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
+<th style="text-align: left;">Intervene to Spread Democracy</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
 </tr>
 </thead>
 <tbody>
@@ -2012,14 +2041,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Does Not Support Military Force  20711 0.678
 2 Supports Military Force           4294 0.141</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>democracy_intervention_nomil_prop</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>democracy_intervention_nomil_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"No Military Affiliation"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Intervene to Spread Democracy"</span>, <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-14">Table 12: </span>No Military Affiliation</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">democracy_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
+<th style="text-align: left;">Intervene to Spread Democracy</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
 </tr>
 </thead>
 <tbody>
@@ -2053,9 +2085,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
                       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1                      1.83    1.83 0.00579</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>democracy_intervention_mean</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>democracy_intervention_mean</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Average Treatment Effect: Intervene to Support Democracy"</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-15">Table 13: </span>Average Treatment Effect: Intervene to Support Democracy</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">No Military Affiliation</th>
@@ -2072,6 +2106,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tbody>
 </table>
 </div>
+<p>“Would you support the use of U.S. military troops in order to protect American allies under attack by foreign nations?”</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>allies_intervention_vet_prop</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
@@ -2088,14 +2123,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Does Not Support Military Force   1356 0.213
 2 Supports Military Force           4333 0.679</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>allies_intervention_vet_prop</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>allies_intervention_vet_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Veterans"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Protect American Allies"</span>, <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-16">Table 14: </span>Veterans</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">allies_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
+<th style="text-align: left;">Protect American Allies</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
 </tr>
 </thead>
 <tbody>
@@ -2128,14 +2166,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Does Not Support Military Force   8847 0.290
 2 Supports Military Force          16158 0.529</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>allies_intervention_nomil_prop</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>allies_intervention_nomil_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"No Military Affiliation"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Protect American Allies"</span>, <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-17">Table 15: </span>No Military Affiliation</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">allies_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
+<th style="text-align: left;">Protect American Allies</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
 </tr>
 </thead>
 <tbody>
@@ -2169,9 +2210,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
                       &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
 1                      1.35    1.24 -0.115</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>allies_intervention_mean</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>allies_intervention_mean</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Average Treatment Effect: Protect American Allies"</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-18">Table 16: </span>Average Treatment Effect: Protect American Allies</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">No Military Affiliation</th>
@@ -2188,6 +2231,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tbody>
 </table>
 </div>
+<p>“Would you support the use of U.S. military troops in order to help the United Nations uphold international law?”</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>UN_intervention_vet_prop</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
@@ -2204,14 +2248,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Does Not Support Military Force   3144 0.493
 2 Supports Military Force           2545 0.399</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>UN_intervention_vet_prop</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>UN_intervention_vet_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Veterans"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Uphold UN International Law"</span>, <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-19">Table 17: </span>Veterans</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">UN_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
+<th style="text-align: left;">Uphold UN International Law</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
 </tr>
 </thead>
 <tbody>
@@ -2244,14 +2291,18 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 Does Not Support Military Force  13580 0.445
 2 Supports Military Force          11425 0.374</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>UN_intervention_nomil_prop</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>UN_intervention_nomil_prop</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"No Military Affiliation"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Uphold UN International Law"</span>,</span>
+<span>                           <span class='st'>"Amount"</span>, <span class='st'>"Proportion"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-20">Table 18: </span>No Military Affiliation</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">UN_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
+<th style="text-align: left;">Uphold UN International Law</th>
+<th style="text-align: right;">Amount</th>
+<th style="text-align: right;">Proportion</th>
 </tr>
 </thead>
 <tbody>
@@ -2285,9 +2336,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
                       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 1                      1.54    1.55 0.00955</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>UN_intervention_mean</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>UN_intervention_mean</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Average Treatment Effect: Uphold UN International Law"</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-21">Table 19: </span>Average Treatment Effect: Uphold UN International Law</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">No Military Affiliation</th>
@@ -2304,125 +2357,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tbody>
 </table>
 </div>
+<h2 id="overview-of-the-average-treatment-effect">Overview of the Average Treatment Effect</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>none_intervention_vet_prop</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
-<span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>milstat_3</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>none_intervention</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>amount <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>prop <span class='op'>=</span> <span class='va'>amount</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>amount</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
-<span><span class='va'>none_intervention_vet_prop</span></span></code></pre>
-</div>
-<pre><code># A tibble: 2 × 3
-  none_intervention        amount   prop
-  &lt;chr&gt;                     &lt;int&gt;  &lt;dbl&gt;
-1 Never use Military Force    495 0.0776
-2 Use Military Force         5194 0.814 </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>none_intervention_vet_prop</span><span class='op'>)</span></span></code></pre>
-</div>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">none_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Never use Military Force</td>
-<td style="text-align: right;">495</td>
-<td style="text-align: right;">0.0775984</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Use Military Force</td>
-<td style="text-align: right;">5194</td>
-<td style="text-align: right;">0.8142342</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>none_intervention_nomil_prop</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
-<span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>milstat_5</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>none_intervention</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>amount <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>prop <span class='op'>=</span> <span class='va'>amount</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>amount</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span></span>
-<span><span class='va'>none_intervention_nomil_prop</span></span></code></pre>
-</div>
-<pre><code># A tibble: 2 × 3
-  none_intervention        amount  prop
-  &lt;chr&gt;                     &lt;int&gt; &lt;dbl&gt;
-1 Never use Military Force   3952 0.129
-2 Use Military Force        21053 0.689</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>none_intervention_nomil_prop</span><span class='op'>)</span></span></code></pre>
-</div>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">none_intervention</th>
-<th style="text-align: right;">amount</th>
-<th style="text-align: right;">prop</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Never use Military Force</td>
-<td style="text-align: right;">3952</td>
-<td style="text-align: right;">0.1293829</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Use Military Force</td>
-<td style="text-align: right;">21053</td>
-<td style="text-align: right;">0.6892454</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>none_intervention_mean</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>identity</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>mean_none <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>CC22_420_7</span>,</span>
-<span>                                na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>names_from <span class='op'>=</span> <span class='va'>identity</span>,</span>
-<span>              values_from <span class='op'>=</span> <span class='va'>mean_none</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ATE <span class='op'>=</span> <span class='va'>`Veteran`</span> <span class='op'>-</span> <span class='va'>`No Military Affiliation`</span><span class='op'>)</span></span>
-<span><span class='va'>none_intervention_mean</span></span></code></pre>
-</div>
-<pre><code># A tibble: 1 × 3
-  `No Military Affiliation` Veteran    ATE
-                      &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
-1                      1.84    1.91 0.0710</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>none_intervention_mean</span><span class='op'>)</span></span></code></pre>
-</div>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: right;">No Military Affiliation</th>
-<th style="text-align: right;">Veteran</th>
-<th style="text-align: right;">ATE</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1.841952</td>
-<td style="text-align: right;">1.91299</td>
-<td style="text-align: right;">0.0710384</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ATE_consolidate</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind_rows.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>oil_intervention_mean</span>, <span class='va'>gwot_intervention_mean</span>, <span class='va'>genocide_intervention_mean</span>, <span class='va'>democracy_intervention_mean</span>, <span class='va'>allies_intervention_mean</span>, <span class='va'>UN_intervention_mean</span>, <span class='va'>none_intervention_mean</span>, .id <span class='op'>=</span> <span class='st'>"Tibble_Name"</span><span class='op'>)</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ATE_consolidate</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind_rows.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>oil_intervention_mean</span>, <span class='va'>gwot_intervention_mean</span>, <span class='va'>genocide_intervention_mean</span>, <span class='va'>democracy_intervention_mean</span>, <span class='va'>allies_intervention_mean</span>, <span class='va'>UN_intervention_mean</span>, .id <span class='op'>=</span> <span class='st'>"Tibble_Name"</span><span class='op'>)</span></span>
 <span></span>
 <span><span class='va'>ATE_consolidate</span> <span class='op'>&lt;-</span> <span class='va'>ATE_consolidate</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Tibble_Name <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span></span>
@@ -2436,7 +2374,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span>    <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='va'>Tibble_Name</span><span class='op'>)</span><span class='op'>)</span></span>
 <span><span class='va'>ATE_consolidate</span></span></code></pre>
 </div>
-<pre><code># A tibble: 7 × 4
+<pre><code># A tibble: 6 × 4
   Tibble_Name `No Military Affiliation` Veteran      ATE
   &lt;chr&gt;                           &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
 1 Oil                              1.78    1.73 -0.0484 
@@ -2444,15 +2382,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 3 Genocide                         1.62    1.66  0.0413 
 4 Democracy                        1.83    1.83  0.00579
 5 Allies                           1.35    1.24 -0.115  
-6 UN                               1.54    1.55  0.00955
-7 None                             1.84    1.91  0.0710 </code></pre>
+6 UN                               1.54    1.55  0.00955</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>ATE_consolidate</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>ATE_consolidate</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Topic"</span>, <span class='st'>"No Military Affiliation"</span>, <span class='st'>"Veteran"</span>, <span class='st'>"ATE"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Tibble_Name</th>
+<th style="text-align: left;">Topic</th>
 <th style="text-align: right;">No Military Affiliation</th>
 <th style="text-align: right;">Veteran</th>
 <th style="text-align: right;">ATE</th>
@@ -2495,15 +2433,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">1.552645</td>
 <td style="text-align: right;">0.0095541</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">None</td>
-<td style="text-align: right;">1.841952</td>
-<td style="text-align: right;">1.912990</td>
-<td style="text-align: right;">0.0710384</td>
-</tr>
 </tbody>
 </table>
 </div>
+<h2 id="measurement-of-hawkish-ideology">Measurement of Hawkish Ideology</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>CCES22</span> <span class='op'>&lt;-</span> <span class='va'>CCES22</span> <span class='op'>|&gt;</span></span>
@@ -2522,13 +2455,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 1 No Military Affiliation         2.35
 2 Veteran                         2.67</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>hawkish_score_table</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>hawkish_score_table</span>,</span>
+<span>             caption <span class='op'>=</span> <span class='st'>"Hawkish Ideology"</span>,</span>
+<span>             col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Identity"</span>, <span class='st'>"Average Hawkish Score"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <table>
+<caption><span id="tab:unnamed-chunk-23">Table 20: </span>Hawkish Ideology</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">identity</th>
-<th style="text-align: right;">hawkish_mean</th>
+<th style="text-align: left;">Identity</th>
+<th style="text-align: right;">Average Hawkish Score</th>
 </tr>
 </thead>
 <tbody>
@@ -2543,7 +2479,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
